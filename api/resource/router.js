@@ -19,8 +19,8 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/',(req, res, next) => {
-    const newResource = req.body
-    Resource.add(newResource)
+    
+    Resource.add(req.body)
         .then(resource => {
         res.status(201).json(resource)
         })

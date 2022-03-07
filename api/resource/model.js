@@ -4,14 +4,13 @@ function findResource() {
     return db('resources')
 }
 
-function add(newResource) {
-    return db('resources')
-        .insert(newResource)
-        .then(([resource_id]) => {
-        return findResource(resource_id)
-    })
+async function add(newResource) {
+    const [resource_id] = await db('resources').insert(newResource)
+
+    return findResource(resource_id)
 }
 
 module.exports = {
-    findResource
+    findResource,
+    add
 }
